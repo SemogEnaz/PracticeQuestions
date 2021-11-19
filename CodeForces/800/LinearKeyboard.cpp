@@ -3,7 +3,12 @@
 
 using namespace std;
 
+int mkPos(int n)
+{
+    if (n < 0) return n * -1;
 
+    return n;
+}
 
 int main(){
 
@@ -13,18 +18,19 @@ int main(){
     string keyBoard = "";
     string word = "";
 
-    int result[t] = {0};
-    int count = 0;
+    int result = 0;
 
-    while (t--)
+    for (;t;t--, result = 0)
     {
         cin >> keyBoard;
         cin >> word;
 
-        
+        for (int i = 1; i < word.length(); i++)
+        {
+            result += mkPos(keyBoard.find(word[i-1]) - keyBoard.find(word[i]));
+        }
+        cout << result << '\n';
     }
-
-
 
     return 0;
 }
